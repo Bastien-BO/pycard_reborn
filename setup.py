@@ -1,24 +1,23 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages
+from setuptools import setup
 
 
-# Calculate the version based on pycard.VERSION
-version = '.'.join([str(v) for v in __import__('pycard').VERSION])
+version = "1.0.0"
 
 setup(
-    name='captain-pycard',
-    description='A simple library for payment card validation',
-    version=version,
-    author='Michael Angeletti',
-    author_email='michael@angelettigroup.com',
-    url='https://github.com/orokusaki/pycard/',
+    author='Bastien Bo',
     classifiers=[
+        'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Development Status :: 4 - Beta',
-        'Topic :: Utilities'
+        'Topic :: Utilities',
     ],
+    description='A simple library for payment card validation, revived from the dead',
+    name='pycard_reborn',
     packages=find_packages(),
+    url='https://github.com/Bastien-BO/pycard_reborn',
+    version=version,
 )
