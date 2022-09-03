@@ -17,10 +17,11 @@ class CardNumberException(PycardRebornException):
     pass
 
 
-class CardNuberNotOnlyDigitException(CardNumberException):
+class CardNuberNotDigitException(CardNumberException):
     """
     Card number do not contain only digits
     """
+    pass
 
 
 class MaskException(PycardRebornException):

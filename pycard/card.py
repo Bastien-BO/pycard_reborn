@@ -8,7 +8,7 @@ from datetime import timedelta
 from pycard.data import Brand
 from pycard.data import FriendlyBrand
 from pycard.data import TESTS_CARDS
-from pycard.exceptions import CardNuberNotOnlyDigitException
+from pycard.exceptions import CardNuberNotDigitException
 from pycard.exceptions import MaskException
 
 
@@ -26,7 +26,7 @@ class Card:
         non-digits from the provided number.
         """
         if not number.isdigit():
-            raise CardNuberNotOnlyDigitException(
+            raise CardNuberNotDigitException(
                 f'card number {number} contain non digit character(s)'
             )
         self.cvc: int = cvc
@@ -65,7 +65,7 @@ class Card:
 
         return 'unknown'
 
-    def friendly_brand(self):
+    def friendly_brand(self) -> str:
         """
         Returns the human-friendly brand name of the card.
         """
@@ -74,7 +74,7 @@ class Card:
                 return friendly.value
         raise MaskException('Unable to find matching friendly brand')
 
-    def is_test(self):
+    def is_test(self) -> bool:
         """
         Returns whether the card's number is a known test number.
         """
