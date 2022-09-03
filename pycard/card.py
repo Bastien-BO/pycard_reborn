@@ -1,7 +1,9 @@
 """
 The class library
 """
-import datetime
+
+from datetime import datetime
+from datetime import timedelta
 
 from pycard.data import Brand
 from pycard.data import FriendlyBrand
@@ -15,7 +17,10 @@ class Card:
     A credit card that may be valid or invalid.
     """
 
-    def __init__(self, number: str, month: int, year: int, cvc: int = None, holder=None):
+    def __init__(
+            self, number: str, month: int, year: int,
+            cvc: int = None, holder=None
+    ):
         """
         Attaches the provided card data and holder to the card after removing
         non-digits from the provided number.
@@ -38,7 +43,9 @@ class Card:
         """
         # If the card is invalid, return an "invalid" message
         if not self.is_mod10_valid:
-            raise Exception
+            raise MaskException(
+                'Unable to generate card mask, due to mod10 invalid'
+            )
 
         # If the card is an Amex, it will have special formatting
         if self.brand() == Brand.amex.name:
@@ -78,7 +85,7 @@ class Card:
         Returns whether the card is expired.
         """
 
-        today: datetime = datetime.datetime.utcnow() - datetime.timedelta(hours=11)
+        today: datetime = datetime.utcnow() - timedelta(hours=11)
         if self.year < today.year or self.month < today.month:
             return True
 
