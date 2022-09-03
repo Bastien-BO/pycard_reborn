@@ -2,6 +2,7 @@ class Holder(object):
     """
     A credit card holder.
     """
+
     def __init__(self, first, last, street, post_code):
         """
         Attaches holder data for later use.
@@ -15,11 +16,11 @@ class Holder(object):
         """
         Returns a typical repr with a simple representation of the holder.
         """
-        return u'<Holder name={n}>'.format(n=self.name)
+        return "<Holder name={n}>".format(n=self.name)
 
     @property
     def name(self):
         """
         Returns the full name of the holder.
         """
-        return u'{f} {l}'.format(f=self.first, l=self.last)
+        return "{f} {l}".format(f=self.first, l=self.last)

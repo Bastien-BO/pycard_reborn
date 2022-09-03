@@ -18,8 +18,7 @@ class Card:
     """
 
     def __init__(
-            self, number: str, month: int, year: int,
-            cvc: int = None, holder=None
+        self, number: str, month: int = None, year: int = None, cvc: int = None, holder=None
     ):
         """
         Attaches the provided card data and holder to the card after removing
@@ -27,7 +26,7 @@ class Card:
         """
         if not number.isdigit():
             raise CardNuberNotDigitException(
-                f'card number {number} contain non digit character(s)'
+                f"card number {number} contain non digit character(s)"
             )
         self.cvc: int = cvc
         self.holder: int = holder
@@ -44,15 +43,15 @@ class Card:
         # If the card is invalid, return an "invalid" message
         if not self.is_mod10_valid:
             raise MaskException(
-                'Unable to generate card mask, due to mod10 invalid'
+                "Unable to generate card mask, due to mod10 invalid"
             )
 
         # If the card is an Amex, it will have special formatting
         if self.brand() == Brand.amex.name:
-            return f'XXXX-XXXXXX-X{self.number[11:15]}'
+            return f"XXXX-XXXXXX-X{self.number[11:15]}"
 
         # All other cards
-        return f'XXXX-XXXX-XXXX-{self.number[12:16]}'
+        return f"XXXX-XXXX-XXXX-{self.number[12:16]}"
 
     def brand(self) -> str:
         """
@@ -60,10 +59,10 @@ class Card:
         """
         # Check if the card is of known type
         for brand in Brand:
-            if brand.value.regexp.match(self.number):
+            if brand.value.match(self.number):
                 return brand.name
 
-        return 'unknown'
+        return "unknown"
 
     def friendly_brand(self) -> str:
         """
@@ -72,7 +71,7 @@ class Card:
         for friendly in FriendlyBrand:
             if friendly.name == self.brand():
                 return friendly.value
-        raise MaskException('Unable to find matching friendly brand')
+        raise MaskException("Unable to find matching friendly brand")
 
     def is_test(self) -> bool:
         """

@@ -8,7 +8,7 @@ Installation
 ------------
 
 ```bash
-pip install captain-pycard  # pycard was taken in PyPi
+pip install pycard
 ```
 
 That's it, and there are no dependencies!

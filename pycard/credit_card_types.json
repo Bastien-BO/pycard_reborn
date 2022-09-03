@@ -1,0 +1,10 @@
+{
+  "credit_card_types": [
+    {
+      "name": "",
+      "name_digest": "",
+      "card_length": [],
+      "card_prefix": []
+    }
+  ]
+}

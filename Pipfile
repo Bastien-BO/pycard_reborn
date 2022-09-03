@@ -6,4 +6,6 @@ name = "pypi"
 [packages]
 
 [dev-packages]
-wheel = "*"
+pytest = "~=7.1.3"
+coverage = "~=6.4.4"
+black= "~=22.8.0"
